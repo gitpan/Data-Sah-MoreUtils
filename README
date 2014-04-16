@@ -1,0 +1,75 @@
+NAME
+    Data::Sah::MoreUtils - More utility functions related to Data::Sah
+
+VERSION
+    version 0.01
+
+SYNOPSIS
+     use Data::Sah::MoreUtils qw(
+         get_type
+         is_simple is_numeric is_collection is_ref
+     );
+
+     say get_type("int");                          # -> int
+     say get_type("int*");                         # -> int
+     say get_type([int => min=>0]);                # -> int
+
+     say is_simple("int");                          # -> 1
+     say is_simple("array");                        # -> 0
+     say is_simple([any => of => ["float", "str"]); # -> 1
+
+     say is_numeric(["int", min=>0]); # -> 1
+
+     say is_collection("array*"); # -> 1
+
+     say is_ref("code*"); # -> 1
+
+DESCRIPTION
+    This module provides some secondary utility functions related to Sah and
+    Data::Sah. It is deliberately distributed separately from the Data-Sah
+    main distribution to be differentiated from Data::Sah::Util which
+    contains "primary" utilities and is distributed with Data-Sah.
+
+FUNCTIONS
+    None exported by default, but they are exportable.
+
+  get_type($sch) => STR
+  is_simple($sch[, \%opts]) => BOOL
+    Simple means scalar and not a reference.
+
+    Options:
+
+    *   schema_is_normalized => BOOL
+
+  is_collection($sch[, \%opts]) => BOOL
+  is_numeric($sch[, \%opts]) => BOOL
+    Currently, only "num", "int", and float are numeric.
+
+  is_ref($sch[, \%opts]) => BOOL
+SEE ALSO
+    Data::Sah
+
+HOMEPAGE
+    Please visit the project's homepage at
+    <https://metacpan.org/release/Data-Sah-MoreUtils>.
+
+SOURCE
+    Source repository is at
+    <https://github.com/sharyanto/perl-Data-Sah-MoreUtils>.
+
+BUGS
+    Please report any bugs or feature requests on the bugtracker website
+    <https://rt.cpan.org/Public/Dist/Display.html?Name=Data-Sah-MoreUtils>
+
+    When submitting a bug or request, please include a test-file or a patch
+    to an existing test-file that illustrates the bug or desired feature.
+
+AUTHOR
+    Steven Haryanto <stevenharyanto@gmail.com>
+
+COPYRIGHT AND LICENSE
+    This software is copyright (c) 2014 by Steven Haryanto.
+
+    This is free software; you can redistribute it and/or modify it under
+    the same terms as the Perl 5 programming language system itself.
+
